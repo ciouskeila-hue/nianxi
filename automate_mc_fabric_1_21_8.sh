@@ -189,6 +189,9 @@ xdotool key F2
 sleep 2
 import -display :99 -window root "$ARTIFACT_DIR/final_fullscreen.png"
 LATEST=$(find "$WORK_DIR/screenshots" -type f -name '*.png' | sort | tail -n1 || true)
-[[ -n "$LATEST" ]] && cp "$LATEST" "$ARTIFACT_DIR/minecraft_f2.png"
+if [[ -n "$LATEST" ]]; then
+  cp "$LATEST" "$ARTIFACT_DIR/minecraft_f2.png"
+  cp "$LATEST" "$ARTIFACT_DIR/minecraft_f2.png.txt"
+fi
 
 echo "Done. Artifacts in $ARTIFACT_DIR"
